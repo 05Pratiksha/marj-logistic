@@ -2,97 +2,189 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Star, Quote } from 'lucide-react';
 
+const reviews = [
+  {
+    name: 'Rohan Malhotra',
+    role: 'Operations Director, NexaTech',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop',
+    rating: 5,
+    review: "MARJ's express courier is outstanding. We had a high-priority contract package that needed to go from Delhi to Bangalore by noon. They executed it seamlessly with digital proofs of delivery. A game changer.",
+  },
+  {
+    name: 'Priya Sharma',
+    role: 'Travel Blogger & Curator',
+    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=150&auto=format&fit=crop',
+    rating: 5,
+    review: "I booked their Kerala Backwaters Tour for my parents. From the flight bookings to the houseboat coordination and local chauffeur service, everything was top-tier luxury. Will definitely book again!",
+  },
+  {
+    name: 'Aditya Sen',
+    role: 'Founder, Zyllo Goods',
+    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=150&auto=format&fit=crop',
+    rating: 5,
+    review: "What sets them apart is their customer support. Had an unexpected flight cancellation due to weather, and their desk auto-routed us to a luxury sleeper coach instantly. Incredible commitment.",
+  },
+];
+
 export default function Testimonials() {
-  const reviews = [
-    {
-      name: 'Rohan Malhotra',
-      role: 'Operations Director, NexaTech',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop',
-      rating: 5,
-      review: "MARJ's express courier is outstanding. We had a high-priority contract package that needed to go from Delhi to Bangalore by noon. They executed it seamlessly with digital proofs of delivery. A game changer.",
-    },
-    {
-      name: 'Priya Sharma',
-      role: 'Travel Blogger & Curator',
-      image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=150&auto=format&fit=crop',
-      rating: 5,
-      review: "I booked their Kerala Backwaters Tour for my parents. From the flight bookings to the houseboat coordination and local chauffeur service, everything was top-tier luxury. Will definitely book again!",
-    },
-    {
-      name: 'Aditya Sen',
-      role: 'Founder, Zyllo Goods',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=150&auto=format&fit=crop',
-      rating: 5,
-      review: "What sets them apart is their customer support. Had an unexpected flight cancellation due to weather, and their desk auto-routed us to a luxury sleeper coach instantly. Incredible commitment.",
-    },
-  ];
-
   return (
-    <section className="py-28 bg-brand-bg-primary relative overflow-hidden border-t border-brand-border bg-dots">
-      <div className="absolute bottom-10 left-10 w-[300px] h-[300px] bg-brand-gold/5 rounded-full blur-[100px] pointer-events-none" />
+    <section
+      id="testimonials"
+      style={{
+        padding: '96px 0',
+        backgroundColor: '#1B3A2D',
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      {/* Organic blob accents */}
+      <div style={{
+        position: 'absolute', bottom: '-80px', left: '-60px',
+        width: '400px', height: '400px', borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(181,107,63,0.12) 0%, transparent 70%)',
+        pointerEvents: 'none',
+      }} />
+      <div style={{
+        position: 'absolute', top: '-60px', right: '-60px',
+        width: '350px', height: '350px', borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(74,124,89,0.15) 0%, transparent 70%)',
+        pointerEvents: 'none',
+      }} />
 
-      <div className="max-w-7xl mx-auto px-8 relative">
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 32px', position: 'relative' }}>
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-20 space-y-4 font-sans">
-          <span className="text-xs font-semibold uppercase tracking-widest text-brand-gold font-sans">
-            REVIEWS
+        <div style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto 72px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <span style={{
+            display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
+            fontFamily: "'Inter', sans-serif",
+            fontSize: '0.65rem',
+            fontWeight: 700,
+            letterSpacing: '0.22em',
+            textTransform: 'uppercase',
+            color: '#A8D5B5',
+          }}>
+            <span style={{ display: 'inline-block', width: '24px', height: '1.5px', background: '#4A7C59' }} />
+            Customer Stories
+            <span style={{ display: 'inline-block', width: '24px', height: '1.5px', background: '#4A7C59' }} />
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-brand-dark-brown font-display leading-tight">
-            Trusted By Thousands
+          <h2 style={{
+            fontFamily: "'Cormorant Garamond', serif",
+            fontSize: 'clamp(2.2rem, 4vw, 3.5rem)',
+            fontWeight: 700,
+            color: '#F4EFE6',
+            margin: 0,
+            lineHeight: 1.15,
+          }}>
+            Trusted By <em style={{ fontWeight: 400, color: '#D4865A' }}>Thousands</em>
           </h2>
-          <p className="text-brand-text-secondary text-sm font-sans">
-            Hear from our corporate logistic clients and vacation travelers who experience the premium MARJ standard every day.
+          <p style={{
+            fontFamily: "'Inter', sans-serif",
+            fontSize: '0.92rem',
+            color: 'rgba(244, 239, 230, 0.65)',
+            lineHeight: 1.7,
+            margin: 0,
+          }}>
+            Hear from corporate logistics clients and vacation travelers who experience the premium MARJ standard every day.
           </p>
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Cards */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }} className="testimonials-grid">
           {reviews.map((rev, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="glass-panel glass-panel-hover p-8 rounded-3xl flex flex-col justify-between relative"
+              transition={{ duration: 0.6, delay: idx * 0.12 }}
+              style={{
+                padding: '36px 32px',
+                background: 'rgba(255, 255, 255, 0.05)',
+                backdropFilter: 'blur(12px)',
+                border: '1px solid rgba(168, 213, 181, 0.15)',
+                borderRadius: '24px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                gap: '24px',
+                position: 'relative',
+                transition: 'all 0.35s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.09)';
+                e.currentTarget.style.borderColor = 'rgba(168, 213, 181, 0.3)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
+                e.currentTarget.style.borderColor = 'rgba(168, 213, 181, 0.15)';
+              }}
             >
-              {/* Quote Icon Background */}
-              <Quote className="absolute right-8 top-8 w-10 h-10 text-brand-gold/15 pointer-events-none" />
+              {/* Decorative quote */}
+              <Quote size={36} color="rgba(168,213,181,0.08)" style={{ position: 'absolute', top: '24px', right: '24px' }} />
 
-              <div className="space-y-6">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                 {/* Stars */}
-                <div className="flex gap-1 text-brand-gold">
+                <div style={{ display: 'flex', gap: '3px' }}>
                   {[...Array(rev.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-brand-gold" />
+                    <Star key={i} size={14} fill="#D4865A" color="#D4865A" />
                   ))}
                 </div>
 
-                {/* Review Text */}
-                <p className="text-brand-text-secondary text-sm leading-relaxed italic font-sans">
+                {/* Review */}
+                <p style={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontSize: '1.05rem',
+                  fontStyle: 'italic',
+                  fontWeight: 400,
+                  color: 'rgba(244, 239, 230, 0.85)',
+                  lineHeight: 1.7,
+                  margin: 0,
+                }}>
                   "{rev.review}"
                 </p>
               </div>
 
-              {/* Profile info */}
-              <div className="flex items-center gap-4 mt-8 pt-6 border-t border-brand-border">
+              {/* Profile */}
+              <div style={{
+                display: 'flex', alignItems: 'center', gap: '14px',
+                paddingTop: '20px',
+                borderTop: '1px solid rgba(168, 213, 181, 0.12)',
+              }}>
                 <img
                   src={rev.image}
                   alt={rev.name}
-                  className="w-11 h-11 rounded-full object-cover border border-brand-border"
+                  style={{
+                    width: '46px', height: '46px', borderRadius: '50%',
+                    objectFit: 'cover',
+                    border: '2px solid rgba(168, 213, 181, 0.25)',
+                  }}
                 />
                 <div>
-                  <h4 className="font-display font-semibold text-sm text-brand-dark-brown">
-                    {rev.name}
-                  </h4>
-                  <p className="text-[11px] text-brand-text-secondary font-medium font-sans">
-                    {rev.role}
-                  </p>
+                  <h4 style={{
+                    fontFamily: "'Cormorant Garamond', serif",
+                    fontSize: '1rem',
+                    fontWeight: 600,
+                    color: '#F4EFE6',
+                    margin: 0,
+                  }}>{rev.name}</h4>
+                  <p style={{
+                    fontFamily: "'Inter', sans-serif",
+                    fontSize: '0.72rem',
+                    color: 'rgba(244, 239, 230, 0.5)',
+                    fontWeight: 500,
+                    margin: '3px 0 0',
+                  }}>{rev.role}</p>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 1024px) { .testimonials-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+        @media (max-width: 640px) { .testimonials-grid { grid-template-columns: 1fr !important; } }
+      `}</style>
     </section>
   );
 }

@@ -2,98 +2,203 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Award, ShieldCheck, Compass, HeartHandshake } from 'lucide-react';
 
+const stats = [
+  { label: 'Delivery Success', value: '99.9%', icon: ShieldCheck },
+  { label: 'Destinations Covered', value: '1,200+', icon: Compass },
+  { label: 'Customer Retention', value: '94%', icon: HeartHandshake },
+  { label: 'Industry Awards', value: '15+', icon: Award },
+];
+
 export default function About() {
-  const stats = [
-    { label: 'Delivery Success', value: '99.9%', icon: ShieldCheck },
-    { label: 'Destinations Visited', value: '1,200+', icon: Compass },
-    { label: 'Customer Retention', value: '94%', icon: HeartHandshake },
-    { label: 'Industry Awards', value: '15+', icon: Award },
-  ];
-
   return (
-    <section id="about" className="py-28 bg-brand-bg-primary relative overflow-hidden bg-dots">
-      <div className="absolute bottom-0 right-0 w-[450px] h-[450px] bg-brand-gold/5 rounded-full blur-[120px] pointer-events-none" />
+    <section
+      id="about"
+      style={{
+        padding: '96px 0',
+        backgroundColor: '#F4EFE6',
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      {/* Background accent blobs */}
+      <div style={{
+        position: 'absolute', bottom: 0, right: 0,
+        width: '500px', height: '500px', borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(181,107,63,0.07) 0%, transparent 70%)',
+        pointerEvents: 'none',
+      }} />
 
-      <div className="max-w-[1280px] mx-auto px-8 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        {/* Left Side: Images Composition */}
-        <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="relative grid grid-cols-12 gap-4"
-        >
-          {/* Main big image */}
-          <div className="col-span-8 aspect-[4/5] rounded-3xl overflow-hidden shadow-xl border border-brand-border">
-            <img
-              src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=600&auto=format&fit=crop"
-              alt="Premium Tour Bus"
-              className="w-full h-full object-cover grayscale-[15%] hover:grayscale-0 transition-all duration-500"
-            />
-          </div>
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 32px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '72px', alignItems: 'center' }}
+          className="about-grid">
 
-          {/* Sub image floating */}
-          <div className="col-span-4 flex flex-col justify-between h-full py-8 gap-4">
-            <div className="aspect-square rounded-2xl overflow-hidden shadow-xl border border-brand-border">
+          {/* Left: Image Composition */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.85 }}
+            style={{ position: 'relative', display: 'grid', gridTemplateColumns: '8fr 4fr', gap: '16px', alignItems: 'stretch' }}
+          >
+            {/* Main image */}
+            <div style={{
+              aspectRatio: '4/5',
+              borderRadius: '24px',
+              overflow: 'hidden',
+              boxShadow: '0 30px 60px rgba(27,58,45,0.15)',
+              border: '1px solid rgba(208,198,179,0.5)',
+            }}>
               <img
-                src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=300&auto=format&fit=crop"
-                alt="Flight Booking"
-                className="w-full h-full object-cover"
+                src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=600&auto=format&fit=crop"
+                alt="Travel Experience"
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               />
             </div>
-            <div className="glass-panel p-5 rounded-2xl flex flex-col justify-center border border-brand-border shadow-lg">
-              <h4 className="text-2xl font-bold font-display text-brand-gold">10+</h4>
-              <p className="text-[9px] uppercase font-bold tracking-wider text-brand-text-secondary">Years of Service</p>
+
+            {/* Side column */}
+            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '16px' }}>
+              <div style={{
+                aspectRatio: '1/1',
+                borderRadius: '20px',
+                overflow: 'hidden',
+                boxShadow: '0 16px 40px rgba(27,58,45,0.12)',
+                border: '1px solid rgba(208,198,179,0.5)',
+              }}>
+                <img
+                  src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=300&auto=format&fit=crop"
+                  alt="Flight Booking"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              </div>
+
+              <div style={{
+                padding: '20px',
+                background: '#1B3A2D',
+                borderRadius: '20px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: '0 16px 40px rgba(27,58,45,0.2)',
+                textAlign: 'center',
+              }}>
+                <span style={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontSize: '2.2rem',
+                  fontWeight: 700,
+                  color: '#A8D5B5',
+                  lineHeight: 1,
+                }}>10+</span>
+                <span style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: '0.62rem',
+                  fontWeight: 700,
+                  letterSpacing: '0.18em',
+                  textTransform: 'uppercase',
+                  color: 'rgba(244,239,230,0.65)',
+                  marginTop: '6px',
+                }}>Years of Service</span>
+              </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
 
-        {/* Right Side: Narrative */}
-        <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="flex flex-col space-y-8"
-        >
-          <div className="space-y-4">
-            <span className="text-xs font-semibold uppercase tracking-widest text-brand-gold">
-              Our Journey
-            </span>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-brand-dark-brown font-display leading-tight">
-              Unifying Logistics & Global Journeys
-            </h2>
-            <p className="text-brand-text-secondary font-sans text-sm md:text-base leading-relaxed font-light">
-              Founded on the belief that moving cargo and passenger journeys deserve the same premium care, MARJ Logistics has grown from an express local courier to an all-inclusive travel, tour, and cargo ecosystem across India.
-            </p>
-            <p className="text-brand-text-secondary font-sans text-sm md:text-base leading-relaxed font-light">
-              We leverage modern digital tracking pipelines, strategic airway agreements, and partnerships with luxury travel resorts to ensure every packages gets delivered and every journey leaves a lasting imprint.
-            </p>
-          </div>
+          {/* Right: Text */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.85 }}
+            style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}
+          >
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <span className="section-badge">
+                <span style={{ display: 'inline-block', width: '24px', height: '1.5px', background: '#4A7C59' }} />
+                Our Journey
+              </span>
+              <h2 style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: 'clamp(2rem, 3.5vw, 3rem)',
+                fontWeight: 700,
+                color: '#1B3A2D',
+                margin: 0,
+                lineHeight: 1.15,
+              }}>
+                Unifying Logistics
+                <br />
+                <em style={{ fontWeight: 400, color: '#B56B3F' }}>&amp; Global Journeys</em>
+              </h2>
+              <p style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: '0.92rem',
+                color: '#7A6E62',
+                lineHeight: 1.75,
+                margin: 0,
+              }}>
+                Founded on the belief that moving cargo and passenger journeys deserve the same premium care, MARJ Logistics has grown from an express local courier to an all-inclusive travel, tour, and cargo ecosystem across India.
+              </p>
+              <p style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: '0.92rem',
+                color: '#7A6E62',
+                lineHeight: 1.75,
+                margin: 0,
+              }}>
+                We leverage modern digital tracking, strategic airway agreements, and partnerships with luxury travel resorts to ensure every package gets delivered and every journey leaves a lasting imprint.
+              </p>
+            </div>
 
-          {/* Stats Grid */}
-          <div className="grid grid-cols-2 gap-6 pt-4">
-            {stats.map((stat, idx) => {
-              const Icon = stat.icon;
-              return (
-                <div key={idx} className="flex gap-4 items-center">
-                  <div className="w-10 h-10 rounded-xl bg-brand-bg-secondary border border-brand-border flex items-center justify-center shrink-0">
-                    <Icon className="w-5 h-5 text-brand-gold" />
+            {/* Stats Grid */}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', paddingTop: '8px' }}>
+              {stats.map((stat, idx) => {
+                const Icon = stat.icon;
+                return (
+                  <div
+                    key={idx}
+                    style={{
+                      display: 'flex', gap: '14px', alignItems: 'center',
+                      padding: '16px 20px',
+                      background: 'white',
+                      borderRadius: '16px',
+                      border: '1px solid rgba(208,198,179,0.5)',
+                      boxShadow: '0 2px 12px rgba(27,58,45,0.04)',
+                    }}
+                  >
+                    <div style={{
+                      width: '40px', height: '40px', borderRadius: '12px',
+                      background: 'rgba(45,90,61,0.07)',
+                      border: '1px solid rgba(45,90,61,0.12)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      flexShrink: 0,
+                    }}>
+                      <Icon size={18} color="#2D5A3D" />
+                    </div>
+                    <div>
+                      <div style={{
+                        fontFamily: "'Cormorant Garamond', serif",
+                        fontSize: '1.4rem',
+                        fontWeight: 700,
+                        color: '#1B3A2D',
+                        lineHeight: 1,
+                      }}>{stat.value}</div>
+                      <div style={{
+                        fontFamily: "'Inter', sans-serif",
+                        fontSize: '0.7rem',
+                        color: '#7A6E62',
+                        fontWeight: 500,
+                        marginTop: '4px',
+                      }}>{stat.label}</div>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-display text-lg font-bold text-brand-dark-brown leading-tight">
-                      {stat.value}
-                    </h4>
-                    <p className="text-xs font-medium text-brand-text-secondary">
-                      {stat.label}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </motion.div>
+                );
+              })}
+            </div>
+          </motion.div>
+        </div>
       </div>
+
+      <style>{`
+        @media (max-width: 1023px) { .about-grid { grid-template-columns: 1fr !important; } }
+      `}</style>
     </section>
   );
 }

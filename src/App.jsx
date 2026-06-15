@@ -14,12 +14,9 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="relative min-h-screen bg-brand-dark text-slate-100 selection:bg-brand-accent selection:text-white">
-      {/* Premium Navbar */}
+    <div style={{ backgroundColor: '#F4EFE6', color: '#3D2314', minHeight: '100vh' }}>
       <Navbar />
-
-      <main className="relative">
-        {/* Sections */}
+      <main>
         <Hero />
         <Services />
         <About />
@@ -31,8 +28,6 @@ function App() {
         <FAQ />
         <Contact />
       </main>
-
-      {/* Premium Footer */}
       <Footer />
     </div>
   );

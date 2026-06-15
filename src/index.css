@@ -1,166 +1,313 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap');
 
 @import "tailwindcss";
 
-@theme {
-  --color-brand-bg-primary: #FAF7F2;
-  --color-brand-bg-secondary: #FFFDF8;
-  --color-brand-text-primary: #1F2937;
-  --color-brand-text-secondary: #6B7280;
-  --color-brand-gold: #D4A574;
-  --color-brand-brown: #8B5E3C;
-  --color-brand-dark-brown: #3E2723;
-  --color-brand-border: #E8E1D8;
-  --color-brand-card: #FFFFFF;
-  --color-brand-footer: #2B1D16;
-  --color-brand-footer-text: #F5F5F5;
+/* ============================================================
+   NATURE & EARTH DESIGN SYSTEM
+   Color Palette inspired by forest, stone, soil, and growth
+   ============================================================ */
 
-  --font-sans: 'Inter', sans-serif;
-  --font-display: 'Playfair Display', serif;
+:root {
+  /* --- Earth Backgrounds --- */
+  --earth-cream: #F4EFE6;
+  --earth-linen: #EDE7D9;
+  --earth-warm: #E8DFD0;
+  --earth-stone: #D4CAB8;
+
+  /* --- Forest Greens --- */
+  --forest-deep: #1B3A2D;
+  --forest-mid: #2D5A3D;
+  --forest-sage: #4A7C59;
+  --forest-light: #7FAF8A;
+  --forest-mint: #A8D5B5;
+
+  /* --- Earth Browns & Terracotta --- */
+  --terra-dark: #3D2314;
+  --terra-mid: #7A4428;
+  --terra-clay: #B56B3F;
+  --terra-warm: #D4865A;
+  --terra-sand: #C9A882;
+
+  /* --- Leaf & Moss --- */
+  --moss-dark: #3B5E2E;
+  --moss-mid: #5A7A40;
+  --leaf-green: #7CB87A;
+
+  /* --- Stone & Neutral --- */
+  --stone-dark: #4A4035;
+  --stone-mid: #7A6E62;
+  --stone-light: #B5ADA0;
+  --stone-pale: #D8D2C8;
+
+  /* --- UI Elements --- */
+  --border-earth: #D0C6B3;
+  --shadow-earth: rgba(61, 35, 20, 0.08);
+  --shadow-forest: rgba(27, 58, 45, 0.12);
 }
 
-@utility glass-panel {
-  background: rgba(255, 255, 255, 0.7);
+/* === GLOBAL BASE === */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--terra-dark);
+  background-color: var(--earth-cream);
+  background-image:
+    radial-gradient(at 0% 0%, rgba(90, 122, 64, 0.04) 0px, transparent 60%),
+    radial-gradient(at 100% 0%, rgba(181, 107, 63, 0.04) 0px, transparent 60%),
+    radial-gradient(at 50% 100%, rgba(27, 58, 45, 0.03) 0px, transparent 60%);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* === TYPOGRAPHY === */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cormorant Garamond', 'DM Serif Display', serif;
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--forest-deep);
+}
+
+/* === SCROLLBAR === */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--earth-linen); }
+::-webkit-scrollbar-thumb {
+  background: var(--terra-sand);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--terra-clay); }
+
+/* === SELECTION === */
+::selection {
+  background: var(--forest-sage);
+  color: white;
+}
+
+/* ============================================================
+   UTILITY CLASSES
+   ============================================================ */
+
+/* === Nature Glass Card === */
+.nature-glass {
+  background: rgba(244, 239, 230, 0.75);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--color-brand-border);
+  border: 1px solid rgba(208, 198, 179, 0.7);
 }
 
-@utility glass-panel-hover {
+.nature-glass-dark {
+  background: rgba(27, 58, 45, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(74, 124, 89, 0.3);
+}
+
+/* === Card Hover === */
+.earth-card-hover {
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  &:hover {
-    background: rgba(255, 255, 255, 0.9);
-    border-color: var(--color-brand-gold);
-    box-shadow: 
-      0 30px 60px -15px rgba(62, 39, 35, 0.08),
-      0 0 50px -10px rgba(212, 165, 116, 0.15);
-    transform: translateY(-4px);
-  }
+}
+.earth-card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 25px 50px -12px rgba(27, 58, 45, 0.12),
+    0 0 30px -8px rgba(181, 107, 63, 0.1);
+  border-color: rgba(90, 122, 64, 0.4) !important;
 }
 
-@utility text-gradient-gold {
-  background: linear-gradient(135deg, var(--color-brand-dark-brown) 0%, var(--color-brand-brown) 50%, var(--color-brand-gold) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-@utility no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-}
-
-@utility bg-dots {
-  background-image: radial-gradient(rgba(212, 165, 116, 0.12) 1.5px, transparent 1.5px);
-  background-size: 32px 32px;
-}
-
-@utility btn-primary {
+/* === Primary Button (Forest Green) === */
+.btn-earth {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 14px 34px;
-  background-color: var(--color-brand-gold);
-  color: var(--color-brand-bg-secondary);
-  font-family: var(--font-sans);
+  gap: 8px;
+  padding: 14px 32px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
   font-weight: 600;
-  font-size: 0.75rem;
-  letter-spacing: 2px;
-  border: 1px solid var(--color-brand-gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
   border-radius: 9999px;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  text-decoration: none;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
-  z-index: 1;
-  &:hover {
-    background-color: #C89463;
-    border-color: #C89463;
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(212, 165, 116, 0.2);
-  }
+  white-space: nowrap;
+  background-color: var(--forest-deep);
+  color: var(--earth-cream);
+  border: 1.5px solid var(--forest-deep);
+}
+.btn-earth:hover {
+  background-color: var(--forest-mid);
+  border-color: var(--forest-mid);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(27, 58, 45, 0.25);
 }
 
-@utility btn-outline {
+/* === Secondary Button (Terra) === */
+.btn-terra {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 14px 34px;
-  background: transparent;
-  color: var(--color-brand-dark-brown);
-  font-family: var(--font-sans);
+  gap: 8px;
+  padding: 14px 32px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
   font-weight: 600;
-  font-size: 0.75rem;
-  letter-spacing: 2px;
-  border: 1px solid var(--color-brand-border);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
   border-radius: 9999px;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  text-decoration: none;
-  &:hover {
-    background: var(--color-brand-bg-secondary);
-    color: var(--color-brand-gold);
-    border-color: var(--color-brand-gold);
-    transform: translateY(-2px);
-  }
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  background-color: var(--terra-clay);
+  color: white;
+  border: 1.5px solid var(--terra-clay);
+}
+.btn-terra:hover {
+  background-color: var(--terra-mid);
+  border-color: var(--terra-mid);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(181, 107, 63, 0.3);
 }
 
-@utility btn-outline-dark {
+/* === Outline Button === */
+.btn-outline-earth {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 14px 34px;
-  background: transparent;
-  color: var(--color-brand-footer-text);
-  font-family: var(--font-sans);
+  gap: 8px;
+  padding: 13px 30px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
   font-weight: 600;
-  font-size: 0.75rem;
-  letter-spacing: 2px;
-  border: 1px solid rgba(245, 245, 245, 0.4);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
   border-radius: 9999px;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  background: transparent;
+  color: var(--forest-deep);
+  border: 1.5px solid var(--border-earth);
+}
+.btn-outline-earth:hover {
+  background: var(--earth-linen);
+  border-color: var(--forest-sage);
+  color: var(--forest-deep);
+  transform: translateY(-2px);
+}
+
+/* === Footer Button === */
+.btn-footer {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 30px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
   text-decoration: none;
-  &:hover {
-    background: var(--color-brand-footer-text);
-    color: var(--color-brand-dark-brown);
-    transform: translateY(-2px);
-  }
-}
-
-@layer base {
-  body {
-    @apply bg-brand-bg-primary text-brand-text-primary font-sans antialiased overflow-x-hidden;
-    background-image: 
-      radial-gradient(at 0% 0%, rgba(214, 129, 56, 0.03) 0px, transparent 50%),
-      radial-gradient(at 50% 0%, rgba(139, 94, 60, 0.03) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, rgba(62, 39, 35, 0.03) 0px, transparent 50%);
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-display;
-  }
-}
-
-/* Custom premium scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color-brand-bg-primary);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-brand-border);
   border-radius: 9999px;
-  border: 2px solid var(--color-brand-bg-primary);
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  background: transparent;
+  color: var(--earth-cream);
+  border: 1.5px solid rgba(244, 239, 230, 0.35);
+}
+.btn-footer:hover {
+  background: var(--earth-cream);
+  color: var(--forest-deep);
+  border-color: var(--earth-cream);
+  transform: translateY(-2px);
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-brand-gold);
+/* === Section Badge === */
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--forest-sage);
+}
+
+/* === Section Divider === */
+.earth-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-earth), transparent);
+}
+
+/* === Input Fields === */
+.earth-input {
+  width: 100%;
+  padding: 12px 16px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  color: var(--terra-dark);
+  background-color: var(--earth-cream);
+  border: 1.5px solid var(--border-earth);
+  border-radius: 12px;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.earth-input:focus {
+  border-color: var(--forest-sage);
+  box-shadow: 0 0 0 3px rgba(90, 122, 64, 0.12);
+}
+.earth-input::placeholder {
+  color: var(--stone-light);
+}
+
+/* === Texture Dots === */
+.texture-dots {
+  background-image: radial-gradient(rgba(90, 122, 64, 0.08) 1.5px, transparent 1.5px);
+  background-size: 28px 28px;
+}
+
+/* === Leaf decorative gradient text === */
+.text-gradient-earth {
+  background: linear-gradient(135deg, var(--forest-deep) 0%, var(--forest-sage) 50%, var(--terra-clay) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* === Organic blob shapes === */
+.blob-animate {
+  animation: blobFloat 8s ease-in-out infinite;
+}
+.blob-animate-reverse {
+  animation: blobFloat 10s ease-in-out infinite reverse;
+}
+
+@keyframes blobFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(15px, -20px) scale(1.05); }
+  66% { transform: translate(-10px, 10px) scale(0.96); }
+}
+
+/* === Shimmer loading effect === */
+@keyframes shimmer {
+  from { background-position: -200% center; }
+  to { background-position: 200% center; }
+}
+
+/* === Leaf pattern overlay === */
+.leaf-overlay {
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M30 5 C20 5 5 20 5 30 C5 40 20 55 30 55 C30 55 55 45 55 30 C55 15 40 5 30 5Z' fill='none' stroke='rgba(90,122,64,0.06)' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 60px 60px;
 }

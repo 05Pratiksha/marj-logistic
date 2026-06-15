@@ -1,78 +1,106 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ArrowRight, Shield, Globe } from 'lucide-react';
+import { Menu, X, ArrowRight, Leaf, Globe2 } from 'lucide-react';
+
+const menuItems = [
+  { name: 'Services', href: '#services' },
+  { name: 'About', href: '#about' },
+  { name: 'Tour Packages', href: '#tours' },
+  { name: 'Logistics', href: '#logistics' },
+  { name: 'FAQs', href: '#faq' },
+  { name: 'Contact', href: '#contact' },
+];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 30);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const menuItems = [
-    { name: 'Services', href: '#services' },
-    { name: 'About Us', href: '#about' },
-    { name: 'Tour Packages', href: '#tours' },
-    { name: 'Logistics', href: '#logistics' },
-    { name: 'FAQs', href: '#faq' },
-    { name: 'Contact', href: '#contact' },
-  ];
-
   return (
     <motion.nav
-      initial={{ y: -50, opacity: 0 }}
+      initial={{ y: -60, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'py-4 bg-brand-bg-secondary/90 backdrop-blur-xl border-b border-brand-border/40 shadow-xl' 
-          : 'py-6 bg-transparent'
-      }`}
+      transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        zIndex: 50,
+        transition: 'all 0.35s ease',
+        padding: isScrolled ? '12px 0' : '20px 0',
+        background: isScrolled
+          ? 'rgba(244, 239, 230, 0.92)'
+          : 'transparent',
+        backdropFilter: isScrolled ? 'blur(20px)' : 'none',
+        WebkitBackdropFilter: isScrolled ? 'blur(20px)' : 'none',
+        borderBottom: isScrolled ? '1px solid rgba(208, 198, 179, 0.5)' : 'none',
+        boxShadow: isScrolled ? '0 4px 30px rgba(27, 58, 45, 0.06)' : 'none',
+      }}
     >
-      <div className="max-w-[1280px] mx-auto px-8 flex items-center justify-between">
-        {/* Brand Logo */}
-        <a href="#" className="flex items-center gap-3 group">
-          <div className="relative w-10 h-10 rounded-full bg-brand-gold flex items-center justify-center overflow-hidden shadow-md shadow-brand-gold/10">
-            <Globe className="w-5 h-5 text-brand-bg-secondary group-hover:rotate-12 transition-transform duration-300" />
-            <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        {/* Logo */}
+        <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '12px', textDecoration: 'none' }}>
+          <div style={{
+            width: '42px', height: '42px', borderRadius: '50%',
+            background: 'linear-gradient(135deg, #1B3A2D 0%, #2D5A3D 100%)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            boxShadow: '0 4px 16px rgba(27, 58, 45, 0.25)',
+          }}>
+            <Leaf size={18} color="#A8D5B5" />
           </div>
-          <div className="flex flex-col">
-            <span className="font-display font-bold text-xl tracking-tight text-brand-dark-brown group-hover:text-brand-gold transition-colors duration-300">
-              MARJ
-            </span>
-            <span className="text-[9px] font-semibold tracking-[0.25em] text-brand-text-secondary -mt-1 uppercase">
-              Logistics & Travel
-            </span>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <span style={{
+              fontFamily: "'Cormorant Garamond', serif",
+              fontSize: '1.3rem',
+              fontWeight: 700,
+              letterSpacing: '-0.01em',
+              color: '#1B3A2D',
+              lineHeight: 1,
+            }}>MARJ</span>
+            <span style={{
+              fontFamily: "'Inter', sans-serif",
+              fontSize: '0.55rem',
+              fontWeight: 600,
+              letterSpacing: '0.22em',
+              color: '#7A6E62',
+              textTransform: 'uppercase',
+              marginTop: '2px',
+            }}>Logistics & Travel</span>
           </div>
         </a>
 
-        {/* Desktop Menu */}
-        <div className="hidden lg:flex items-center gap-8">
+        {/* Desktop Nav */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '36px' }} className="hidden-mobile">
           {menuItems.map((item) => (
             <a
               key={item.name}
               href={item.href}
-              className="text-xs font-semibold tracking-widest uppercase text-brand-text-primary hover:text-brand-gold transition-colors duration-200 relative py-2 group"
+              style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: '0.72rem',
+                fontWeight: 600,
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+                color: '#3D2314',
+                textDecoration: 'none',
+                position: 'relative',
+                paddingBottom: '4px',
+                transition: 'color 0.2s',
+              }}
+              onMouseEnter={(e) => { e.target.style.color = '#2D5A3D'; }}
+              onMouseLeave={(e) => { e.target.style.color = '#3D2314'; }}
             >
               {item.name}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-gold group-hover:w-full transition-all duration-300 ease-out" />
             </a>
           ))}
-        </div>
-
-        {/* Action Button */}
-        <div className="hidden lg:flex items-center gap-4">
-          <a
-            href="#booking"
-            className="btn-primary py-2.5 px-6 text-[10px]"
-          >
-            <span>Get Started</span>
-            <ArrowRight className="w-3.5 h-3.5" />
+          <a href="#booking" className="btn-earth" style={{ padding: '11px 26px', fontSize: '0.68rem' }}>
+            Get Started <ArrowRight size={14} />
           </a>
         </div>
 
@@ -80,9 +108,14 @@ export default function Navbar() {
         <button
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
-          className="lg:hidden p-2 rounded-lg text-brand-dark-brown hover:text-brand-gold transition-colors cursor-pointer"
+          style={{
+            background: 'none', border: 'none', cursor: 'pointer',
+            color: '#1B3A2D', padding: '8px', borderRadius: '8px',
+            display: 'none',
+          }}
+          className="show-mobile"
         >
-          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
@@ -94,30 +127,48 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden border-t border-brand-border bg-brand-bg-secondary/95 backdrop-blur-2xl absolute top-full left-0 w-full overflow-hidden shadow-2xl"
+            style={{
+              background: 'rgba(244, 239, 230, 0.97)',
+              backdropFilter: 'blur(20px)',
+              borderTop: '1px solid rgba(208, 198, 179, 0.5)',
+              overflow: 'hidden',
+            }}
           >
-            <div className="px-8 py-8 flex flex-col gap-6">
+            <div style={{ padding: '24px 32px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
               {menuItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  className="font-display text-xl font-medium text-brand-text-primary hover:text-brand-gold transition-colors duration-200"
+                  style={{
+                    fontFamily: "'Cormorant Garamond', serif",
+                    fontSize: '1.5rem',
+                    fontWeight: 500,
+                    color: '#1B3A2D',
+                    textDecoration: 'none',
+                  }}
                 >
                   {item.name}
                 </a>
               ))}
-              <a
-                href="#booking"
-                onClick={() => setIsOpen(false)}
-                className="w-full text-center py-3.5 rounded-full text-xs font-semibold text-brand-bg-secondary bg-brand-gold hover:shadow-lg hover:shadow-brand-gold/20 transition-all duration-300"
-              >
+              <a href="#booking" onClick={() => setIsOpen(false)} className="btn-earth" style={{ textAlign: 'center', justifyContent: 'center' }}>
                 Book a Service
               </a>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      <style>{`
+        @media (min-width: 1024px) {
+          .hidden-mobile { display: flex !important; }
+          .show-mobile { display: none !important; }
+        }
+        @media (max-width: 1023px) {
+          .hidden-mobile { display: none !important; }
+          .show-mobile { display: block !important; }
+        }
+      `}</style>
     </motion.nav>
   );
 }

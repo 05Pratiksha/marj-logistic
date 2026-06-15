@@ -1,9 +1,74 @@
 import React, { useState } from 'react';
-import { Globe, Send, Check } from 'lucide-react';
+import { Leaf, Send, Check } from 'lucide-react';
+
+const footerLinks = {
+  Services: [
+    { label: 'Courier Dispatch', href: '#services' },
+    { label: 'Air Freight & Bulk', href: '#services' },
+    { label: 'Featured Tours', href: '#tours' },
+    { label: 'Flight Booking', href: '#booking' },
+  ],
+  Company: [
+    { label: 'About Story', href: '#about' },
+    { label: 'Our Team', href: '#' },
+    { label: 'Careers', href: '#' },
+    { label: 'Safety Standards', href: '#' },
+  ],
+  Resources: [
+    { label: 'Help Center / FAQs', href: '#faq' },
+    { label: 'Rate Estimator', href: '#logistics' },
+    { label: 'Courier Tracking', href: '#logistics' },
+    { label: 'Documentation', href: '#' },
+  ],
+  Legal: [
+    { label: 'Terms of Service', href: '#' },
+    { label: 'Privacy Policy', href: '#' },
+    { label: 'Cargo Claims SLA', href: '#' },
+    { label: 'Cookie Settings', href: '#' },
+  ],
+};
+
+const socialLinks = [
+  {
+    label: 'Facebook',
+    icon: (
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Twitter',
+    icon: (
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Instagram',
+    icon: (
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'LinkedIn',
+    icon: (
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+      </svg>
+    ),
+  },
+];
 
 export default function Footer() {
   const [subscribed, setSubscribed] = useState(false);
   const [email, setEmail] = useState('');
+  const currentYear = new Date().getFullYear();
 
   const handleSubscribe = (e) => {
     e.preventDefault();
@@ -12,146 +77,209 @@ export default function Footer() {
     setEmail('');
   };
 
-  const currentYear = new Date().getFullYear();
-
   return (
-    <footer className="bg-brand-footer border-t border-brand-dark-brown/30 pt-20 pb-10 relative overflow-hidden bg-dots">
-      <div className="max-w-7xl mx-auto px-8 relative z-10">
-        
-        {/* Top Part: Branding & Newsletter */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-white/10">
+    <footer style={{
+      backgroundColor: '#1B3A2D',
+      borderTop: '1px solid rgba(74, 124, 89, 0.2)',
+      paddingTop: '80px',
+      paddingBottom: '40px',
+      position: 'relative',
+      overflow: 'hidden',
+    }}>
+      {/* Background accents */}
+      <div style={{
+        position: 'absolute', bottom: 0, left: 0,
+        width: '400px', height: '400px', borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(181,107,63,0.08) 0%, transparent 70%)',
+        pointerEvents: 'none',
+      }} />
+      <div style={{
+        position: 'absolute', top: 0, right: 0,
+        width: '350px', height: '350px', borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(74,124,89,0.1) 0%, transparent 70%)',
+        pointerEvents: 'none',
+      }} />
+
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 32px', position: 'relative', zIndex: 1 }}>
+        {/* Top: Brand + Newsletter */}
+        <div style={{ display: 'grid', gridTemplateColumns: '5fr 7fr', gap: '64px', paddingBottom: '60px', borderBottom: '1px solid rgba(168, 213, 181, 0.1)' }}
+          className="footer-top">
           {/* Brand */}
-          <div className="lg:col-span-5 space-y-6">
-            <a href="#" className="flex items-center gap-3 group">
-              <div className="relative w-10 h-10 rounded-xl bg-brand-gold flex items-center justify-center overflow-hidden shadow-lg shadow-brand-gold/10">
-                <Globe className="w-5 h-5 text-brand-footer" />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '12px', textDecoration: 'none' }}>
+              <div style={{
+                width: '44px', height: '44px', borderRadius: '50%',
+                background: 'linear-gradient(135deg, #2D5A3D 0%, #4A7C59 100%)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                boxShadow: '0 4px 20px rgba(27,58,45,0.4)',
+              }}>
+                <Leaf size={20} color="#A8D5B5" />
               </div>
-              <div className="flex flex-col">
-                <span className="font-display font-bold text-xl tracking-tight text-brand-footer-text">
-                  MARJ
-                </span>
-                <span className="text-[9px] font-semibold tracking-[0.25em] text-brand-gold -mt-1 uppercase">
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.4rem', fontWeight: 700, color: '#F4EFE6', lineHeight: 1 }}>MARJ</span>
+                <span style={{ fontFamily: "'Inter', sans-serif", fontSize: '0.55rem', fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#7FAF8A', marginTop: '3px' }}>
                   Logistics & Travel
                 </span>
               </div>
             </a>
-            <p className="text-brand-footer-text/80 text-sm max-w-sm leading-relaxed font-sans">
+            <p style={{
+              fontFamily: "'Inter', sans-serif",
+              fontSize: '0.85rem',
+              color: 'rgba(244, 239, 230, 0.6)',
+              lineHeight: 1.75,
+              margin: 0,
+              maxWidth: '320px',
+            }}>
               Experience modern, priority shipping networks and luxury customized holiday packages across India. Designed for reliability, built for speed.
             </p>
           </div>
 
           {/* Newsletter */}
-          <div className="lg:col-span-7 space-y-4">
-            <h4 className="font-display text-base font-bold text-brand-footer-text leading-tight">Subscribe to Exclusive Travel Alerts & Logistics Insights</h4>
-            <p className="text-xs text-brand-footer-text/60 font-sans">Stay up to date with seasonal flight deals, tour itinerary releases, and shipping rate adjustments.</p>
-            
-            <form onSubmit={handleSubscribe} className="flex gap-3 max-w-md font-sans">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            <h4 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.3rem', fontWeight: 600, color: '#F4EFE6', margin: 0, lineHeight: 1.3 }}>
+              Subscribe to Exclusive Travel Alerts & Logistics Insights
+            </h4>
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: '0.8rem', color: 'rgba(244,239,230,0.5)', margin: 0, lineHeight: 1.6 }}>
+              Stay up to date with seasonal flight deals, tour itinerary releases, and shipping rate adjustments.
+            </p>
+            <form onSubmit={handleSubscribe} style={{ display: 'flex', gap: '10px', maxWidth: '440px' }}>
               <input
                 type="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter email address"
-                className="flex-1 px-4 py-3 rounded-2xl bg-white/10 border border-white/20 text-white placeholder-white/40 text-xs focus:outline-none focus:border-brand-gold/50 transition-all font-sans"
+                style={{
+                  flex: 1,
+                  padding: '12px 16px',
+                  borderRadius: '12px',
+                  background: 'rgba(255,255,255,0.08)',
+                  border: '1px solid rgba(168,213,181,0.2)',
+                  color: '#F4EFE6',
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: '0.82rem',
+                  outline: 'none',
+                }}
+                onFocus={(e) => { e.target.style.borderColor = 'rgba(168,213,181,0.45)'; }}
+                onBlur={(e) => { e.target.style.borderColor = 'rgba(168,213,181,0.2)'; }}
               />
               <button
                 type="submit"
                 disabled={subscribed}
-                className="px-5 py-3 rounded-2xl bg-brand-gold text-brand-footer font-semibold text-xs hover:bg-[#C89463] hover:text-brand-bg-secondary transition-colors flex items-center gap-1.5 shrink-0 disabled:bg-brand-gold/20 disabled:text-brand-gold cursor-pointer font-sans"
+                style={{
+                  padding: '12px 20px',
+                  borderRadius: '12px',
+                  background: subscribed ? 'rgba(45,90,61,0.5)' : '#D4865A',
+                  color: 'white',
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: '0.75rem',
+                  fontWeight: 600,
+                  border: 'none',
+                  cursor: subscribed ? 'default' : 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  transition: 'background 0.25s',
+                  flexShrink: 0,
+                }}
               >
-                {subscribed ? (
-                  <>
-                    <Check className="w-3.5 h-3.5" />
-                    <span>Subscribed</span>
-                  </>
-                ) : (
-                  <>
-                    <span>Join List</span>
-                    <Send className="w-3 h-3" />
-                  </>
-                )}
+                {subscribed ? (<><Check size={13} /><span>Subscribed</span></>) : (<><span>Join List</span><Send size={12} /></>)}
               </button>
             </form>
           </div>
         </div>
 
-        {/* Middle Part: Links Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-16">
-          <div className="space-y-4">
-            <h4 className="font-sans text-xs font-bold text-brand-gold uppercase tracking-widest">Services</h4>
-            <ul className="space-y-2.5 text-xs text-brand-footer-text/70 font-sans">
-              <li><a href="#services" className="hover:text-brand-gold transition-colors">Courier Dispatch</a></li>
-              <li><a href="#services" className="hover:text-brand-gold transition-colors">Air Freight & Bulk</a></li>
-              <li><a href="#tours" className="hover:text-brand-gold transition-colors">Featured Tours</a></li>
-              <li><a href="#booking" className="hover:text-brand-gold transition-colors">Flight Booking</a></li>
-            </ul>
-          </div>
-          
-          <div className="space-y-4">
-            <h4 className="font-sans text-xs font-bold text-brand-gold uppercase tracking-widest">Company</h4>
-            <ul className="space-y-2.5 text-xs text-brand-footer-text/70 font-sans">
-              <li><a href="#about" className="hover:text-brand-gold transition-colors">About Story</a></li>
-              <li><a href="#" className="hover:text-brand-gold transition-colors">Our Team</a></li>
-              <li><a href="#" className="hover:text-brand-gold transition-colors">Careers</a></li>
-              <li><a href="#" className="hover:text-brand-gold transition-colors">Safety Standards</a></li>
-            </ul>
-          </div>
-
-          <div className="space-y-4">
-            <h4 className="font-sans text-xs font-bold text-brand-gold uppercase tracking-widest">Resources</h4>
-            <ul className="space-y-2.5 text-xs text-brand-footer-text/70 font-sans">
-              <li><a href="#faq" className="hover:text-brand-gold transition-colors">Help Center / FAQs</a></li>
-              <li><a href="#logistics" className="hover:text-brand-gold transition-colors">Rate Estimator</a></li>
-              <li><a href="#logistics" className="hover:text-brand-gold transition-colors">Courier Tracking</a></li>
-              <li><a href="#" className="hover:text-brand-gold transition-colors">Documentation</a></li>
-            </ul>
-          </div>
-
-          <div className="space-y-4">
-            <h4 className="font-sans text-xs font-bold text-brand-gold uppercase tracking-widest">Legal</h4>
-            <ul className="space-y-2.5 text-xs text-brand-footer-text/70 font-sans">
-              <li><a href="#" className="hover:text-brand-gold transition-colors">Terms of Service</a></li>
-              <li><a href="#" className="hover:text-brand-gold transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-brand-gold transition-colors">Cargo Claims SLA</a></li>
-              <li><a href="#" className="hover:text-brand-gold transition-colors">Cookie settings</a></li>
-            </ul>
-          </div>
+        {/* Middle: Links */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '32px', padding: '56px 0' }} className="footer-links">
+          {Object.entries(footerLinks).map(([category, links]) => (
+            <div key={category} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <h4 style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: '0.62rem',
+                fontWeight: 700,
+                letterSpacing: '0.2em',
+                textTransform: 'uppercase',
+                color: '#7FAF8A',
+                margin: 0,
+              }}>
+                {category}
+              </h4>
+              <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                {links.map((link, i) => (
+                  <li key={i}>
+                    <a
+                      href={link.href}
+                      style={{
+                        fontFamily: "'Inter', sans-serif",
+                        fontSize: '0.82rem',
+                        color: 'rgba(244, 239, 230, 0.55)',
+                        textDecoration: 'none',
+                        transition: 'color 0.2s',
+                      }}
+                      onMouseEnter={(e) => { e.target.style.color = '#A8D5B5'; }}
+                      onMouseLeave={(e) => { e.target.style.color = 'rgba(244, 239, 230, 0.55)'; }}
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
-        {/* Bottom Part: Socials & Copyright */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-8 border-t border-white/10 text-xs text-brand-footer-text/60 font-sans">
-          <p>© {currentYear} MARJ LOGISTICS. All rights reserved.</p>
-          <div className="flex items-center gap-4">
-            {/* Custom SVG Facebook */}
-            <a href="#" aria-label="Facebook" className="p-2 rounded-xl bg-white/5 border border-white/10 hover:border-brand-gold hover:text-brand-gold text-brand-footer-text/80 transition-all">
-              <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/>
-              </svg>
-            </a>
-            {/* Custom SVG Twitter/X */}
-            <a href="#" aria-label="Twitter" className="p-2 rounded-xl bg-white/5 border border-white/10 hover:border-brand-gold hover:text-brand-gold text-brand-footer-text/80 transition-all">
-              <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-              </svg>
-            </a>
-            {/* Custom SVG Instagram */}
-            <a href="#" aria-label="Instagram" className="p-2 rounded-xl bg-white/5 border border-white/10 hover:border-brand-gold hover:text-brand-gold text-brand-footer-text/80 transition-all">
-              <svg className="w-3.5 h-3.5 stroke-current fill-none" viewBox="0 0 24 24" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-              </svg>
-            </a>
-            {/* Custom SVG Linkedin */}
-            <a href="#" aria-label="LinkedIn" className="p-2 rounded-xl bg-white/5 border border-white/10 hover:border-brand-gold hover:text-brand-gold text-brand-footer-text/80 transition-all">
-              <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-              </svg>
-            </a>
+        {/* Bottom: Socials + Copyright */}
+        <div style={{
+          display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+          paddingTop: '28px',
+          borderTop: '1px solid rgba(168, 213, 181, 0.1)',
+          flexWrap: 'wrap', gap: '16px',
+        }}>
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: '0.75rem', color: 'rgba(244, 239, 230, 0.4)', margin: 0 }}>
+            © {currentYear} MARJ LOGISTICS. All rights reserved.
+          </p>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            {socialLinks.map((social) => (
+              <a
+                key={social.label}
+                href="#"
+                aria-label={social.label}
+                style={{
+                  width: '34px', height: '34px', borderRadius: '10px',
+                  background: 'rgba(255,255,255,0.05)',
+                  border: '1px solid rgba(168,213,181,0.12)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  color: 'rgba(244,239,230,0.6)',
+                  textDecoration: 'none',
+                  transition: 'all 0.25s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = 'rgba(168,213,181,0.4)';
+                  e.currentTarget.style.color = '#A8D5B5';
+                  e.currentTarget.style.background = 'rgba(168,213,181,0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = 'rgba(168,213,181,0.12)';
+                  e.currentTarget.style.color = 'rgba(244,239,230,0.6)';
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.05)';
+                }}
+              >
+                {social.icon}
+              </a>
+            ))}
           </div>
         </div>
-
       </div>
+
+      <style>{`
+        @media (max-width: 1023px) {
+          .footer-top { grid-template-columns: 1fr !important; }
+          .footer-links { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+        @media (max-width: 640px) {
+          .footer-links { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </footer>
   );
 }

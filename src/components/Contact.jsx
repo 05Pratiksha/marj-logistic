@@ -2,13 +2,28 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Phone, Mail, MapPin, Send, CheckCircle2 } from 'lucide-react';
 
+const contactItems = [
+  { icon: Phone, label: 'Toll-Free Helpline', value: '1800-210-9000' },
+  { icon: Mail, label: 'Corporate Support', value: 'support@marjlogistics.com' },
+  { icon: MapPin, label: 'Mumbai Headquarters', value: 'Level 8, Maker Maxity, BKC, Mumbai - 400051' },
+];
+
+const inputStyle = {
+  width: '100%',
+  padding: '13px 16px',
+  fontFamily: "'Inter', sans-serif",
+  fontSize: '0.875rem',
+  color: '#3D2314',
+  backgroundColor: '#F4EFE6',
+  border: '1.5px solid rgba(208, 198, 179, 0.7)',
+  borderRadius: '14px',
+  outline: 'none',
+  transition: 'border-color 0.25s ease',
+};
+
 export default function Contact() {
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,172 +37,234 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-28 bg-brand-bg-secondary/50 relative overflow-hidden border-t border-brand-border bg-dots">
-      <div className="absolute top-1/2 right-0 w-[450px] h-[450px] bg-brand-gold/5 rounded-full blur-[120px] pointer-events-none" />
+    <section
+      id="contact"
+      style={{
+        padding: '96px 0',
+        backgroundColor: '#EDE7D9',
+        position: 'relative',
+        overflow: 'hidden',
+        borderTop: '1px solid rgba(208, 198, 179, 0.5)',
+      }}
+    >
+      <div style={{
+        position: 'absolute', top: '50%', right: 0, transform: 'translateY(-50%)',
+        width: '450px', height: '450px', borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(181,107,63,0.07) 0%, transparent 70%)',
+        pointerEvents: 'none',
+      }} />
 
-      <div className="max-w-7xl mx-auto px-8 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-          
-          {/* Left Side: Contact Information & Hub Map */}
-          <div className="lg:col-span-5 space-y-10">
-            <div className="space-y-4 font-sans">
-              <span className="text-xs font-semibold uppercase tracking-widest text-brand-gold font-sans">
-                GET IN TOUCH
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 32px', position: 'relative' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '5fr 7fr', gap: '64px' }} className="contact-grid">
+
+          {/* Left: Info */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <span className="section-badge">
+                <span style={{ display: 'inline-block', width: '24px', height: '1.5px', background: '#4A7C59' }} />
+                Get In Touch
               </span>
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-brand-dark-brown font-display leading-tight">
-                Connect With MARJ
+              <h2 style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: 'clamp(2rem, 3.5vw, 3rem)',
+                fontWeight: 700,
+                color: '#1B3A2D',
+                margin: 0,
+                lineHeight: 1.15,
+              }}>
+                Connect With <em style={{ fontWeight: 400, color: '#B56B3F' }}>MARJ</em>
               </h2>
-              <p className="text-brand-text-secondary text-sm md:text-base leading-relaxed font-sans">
-                Have an enterprise shipping inquiry, or looking to plan a private group holiday? Write to us, or stop by one of our regional headquarters.
+              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: '0.9rem', color: '#7A6E62', lineHeight: 1.75, margin: 0 }}>
+                Have an enterprise shipping inquiry or looking to plan a private group holiday? Write to us or stop by one of our regional headquarters.
               </p>
             </div>
 
-            {/* Quick Links */}
-            <div className="space-y-4 font-sans">
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center text-brand-gold shrink-0">
-                  <Phone className="w-4 h-4" />
-                </div>
-                <div>
-                  <p className="text-[10px] text-brand-text-secondary/70 uppercase font-bold tracking-wider">Toll-Free Helpline</p>
-                  <p className="text-sm font-semibold text-brand-dark-brown">1800-210-9000</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center text-brand-gold shrink-0">
-                  <Mail className="w-4 h-4" />
-                </div>
-                <div>
-                  <p className="text-[10px] text-brand-text-secondary/70 uppercase font-bold tracking-wider">Corporate Support</p>
-                  <p className="text-sm font-semibold text-brand-dark-brown">support@marjlogistics.com</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center text-brand-gold shrink-0">
-                  <MapPin className="w-4 h-4" />
-                </div>
-                <div>
-                  <p className="text-[10px] text-brand-text-secondary/70 uppercase font-bold tracking-wider">Mumbai Headquarters</p>
-                  <p className="text-sm font-semibold text-brand-dark-brown">Level 8, Maker Maxity, BKC, Mumbai - 400051</p>
-                </div>
-              </div>
+            {/* Contact info */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              {contactItems.map((item, i) => {
+                const Icon = item.icon;
+                return (
+                  <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
+                    <div style={{
+                      width: '42px', height: '42px', borderRadius: '12px',
+                      background: 'rgba(45,90,61,0.08)',
+                      border: '1px solid rgba(45,90,61,0.12)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      flexShrink: 0,
+                    }}>
+                      <Icon size={18} color="#2D5A3D" />
+                    </div>
+                    <div>
+                      <p style={{ fontFamily: "'Inter', sans-serif", fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#B5ADA0', margin: 0 }}>
+                        {item.label}
+                      </p>
+                      <p style={{ fontFamily: "'Inter', sans-serif", fontSize: '0.9rem', fontWeight: 600, color: '#1B3A2D', margin: '4px 0 0' }}>
+                        {item.value}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
 
-            {/* Simulated Animated Operational Hub Map (SVG) */}
-            <div className="bg-brand-card p-6 rounded-3xl border border-brand-border space-y-4 shadow-sm">
-              <span className="text-[10px] font-bold text-brand-text-secondary uppercase tracking-widest block font-sans">Main Transit Hub Connectors</span>
-              <div className="relative aspect-[4/3] bg-brand-bg-primary rounded-2xl border border-brand-border overflow-hidden flex items-center justify-center">
-                <svg viewBox="0 0 400 300" className="w-full h-full text-brand-text-secondary/20">
-                  {/* Dotted connecting flight/cargo paths */}
-                  <path d="M 200,60 L 150,150" stroke="#D4A574" strokeWidth="1.5" strokeDasharray="4,4" />
-                  <path d="M 200,60 L 250,220" stroke="#D4A574" strokeWidth="1.5" strokeDasharray="4,4" />
-                  <path d="M 150,150 L 250,220" stroke="#8B5E3C" strokeWidth="1.5" strokeDasharray="4,4" />
-                  <path d="M 200,60 L 320,130" stroke="#D4A574" strokeWidth="1.5" strokeDasharray="4,4" />
-                  
-                  {/* Nodes */}
-                  <circle cx="200" cy="60" r="6" fill="#8B5E3C" /> {/* Delhi */}
-                  <circle cx="150" cy="150" r="6" fill="#D4A574" /> {/* Mumbai */}
-                  <circle cx="250" cy="220" r="6" fill="#8B5E3C" /> {/* Bangalore */}
-                  <circle cx="320" cy="130" r="6" fill="#D4A574" /> {/* Kolkata */}
-
-                  {/* Labels */}
-                  <text x="212" y="64" fill="#3E2723" fontSize="10" fontWeight="bold" fontFamily="Inter, sans-serif">DELHI</text>
-                  <text x="96" y="154" fill="#3E2723" fontSize="10" fontWeight="bold" fontFamily="Inter, sans-serif">MUMBAI</text>
-                  <text x="262" y="224" fill="#8B5E3C" fontSize="10" fontWeight="bold" fontFamily="Inter, sans-serif">BANGALORE</text>
-                  <text x="332" y="134" fill="#3E2723" fontSize="10" fontWeight="bold" fontFamily="Inter, sans-serif">KOLKATA</text>
+            {/* Hub map SVG */}
+            <div style={{
+              background: 'white',
+              border: '1px solid rgba(208,198,179,0.5)',
+              borderRadius: '20px',
+              padding: '24px',
+              boxShadow: '0 4px 20px rgba(27,58,45,0.05)',
+            }}>
+              <span style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: '0.62rem',
+                fontWeight: 700,
+                letterSpacing: '0.18em',
+                textTransform: 'uppercase',
+                color: '#7A6E62',
+                display: 'block',
+                marginBottom: '16px',
+              }}>
+                Main Transit Hub Connectors
+              </span>
+              <div style={{ aspectRatio: '4/3', background: '#F4EFE6', borderRadius: '14px', overflow: 'hidden' }}>
+                <svg viewBox="0 0 400 300" style={{ width: '100%', height: '100%' }}>
+                  <path d="M 200,60 L 150,150" stroke="#4A7C59" strokeWidth="1.5" strokeDasharray="5,4" />
+                  <path d="M 200,60 L 250,220" stroke="#4A7C59" strokeWidth="1.5" strokeDasharray="5,4" />
+                  <path d="M 150,150 L 250,220" stroke="#B56B3F" strokeWidth="1.5" strokeDasharray="5,4" />
+                  <path d="M 200,60 L 320,130" stroke="#4A7C59" strokeWidth="1.5" strokeDasharray="5,4" />
+                  <circle cx="200" cy="60" r="7" fill="#1B3A2D" />
+                  <circle cx="150" cy="150" r="7" fill="#4A7C59" />
+                  <circle cx="250" cy="220" r="7" fill="#1B3A2D" />
+                  <circle cx="320" cy="130" r="7" fill="#B56B3F" />
+                  <circle cx="200" cy="60" r="3" fill="#A8D5B5" />
+                  <circle cx="150" cy="150" r="3" fill="#A8D5B5" />
+                  <circle cx="250" cy="220" r="3" fill="#A8D5B5" />
+                  <circle cx="320" cy="130" r="3" fill="#F4EFE6" />
+                  <text x="212" y="63" fill="#1B3A2D" fontSize="10" fontWeight="bold" fontFamily="Inter, sans-serif">DELHI</text>
+                  <text x="96" y="153" fill="#1B3A2D" fontSize="10" fontWeight="bold" fontFamily="Inter, sans-serif">MUMBAI</text>
+                  <text x="260" y="223" fill="#3D2314" fontSize="10" fontWeight="bold" fontFamily="Inter, sans-serif">BANGALORE</text>
+                  <text x="330" y="133" fill="#3D2314" fontSize="10" fontWeight="bold" fontFamily="Inter, sans-serif">KOLKATA</text>
                 </svg>
               </div>
             </div>
           </div>
 
-          {/* Right Side: Inquiry Form */}
-          <div className="lg:col-span-7">
-            <div className="bg-brand-card p-8 md:p-12 rounded-3xl border border-brand-border shadow-xl relative">
-              <AnimatePresence mode="wait">
-                {!formSubmitted ? (
-                  <motion.form
-                    key="contact-form"
-                    onSubmit={handleSubmit}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="space-y-6 font-sans"
+          {/* Right: Contact Form */}
+          <div style={{
+            background: 'white',
+            padding: '44px 40px',
+            borderRadius: '28px',
+            border: '1px solid rgba(208, 198, 179, 0.5)',
+            boxShadow: '0 20px 60px rgba(27,58,45,0.07)',
+          }}>
+            <AnimatePresence mode="wait">
+              {!formSubmitted ? (
+                <motion.form
+                  key="form"
+                  onSubmit={handleSubmit}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  style={{ display: 'flex', flexDirection: 'column', gap: '22px' }}
+                >
+                  <div>
+                    <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.6rem', fontWeight: 700, color: '#1B3A2D', margin: '0 0 6px' }}>
+                      Send us a message
+                    </h3>
+                    <p style={{ fontFamily: "'Inter', sans-serif", fontSize: '0.82rem', color: '#7A6E62', margin: 0 }}>
+                      We typically respond within 2-4 hours on business days.
+                    </p>
+                  </div>
+
+                  <div>
+                    <label style={{ fontFamily: "'Inter', sans-serif", fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#7A6E62', display: 'block', marginBottom: '8px' }}>
+                      Your Name
+                    </label>
+                    <input type="text" required value={formData.name}
+                      onChange={(e) => setFormData((p) => ({ ...p, name: e.target.value }))}
+                      placeholder="John Doe" style={inputStyle}
+                      onFocus={(e) => { e.target.style.borderColor = '#4A7C59'; }}
+                      onBlur={(e) => { e.target.style.borderColor = 'rgba(208, 198, 179, 0.7)'; }} />
+                  </div>
+
+                  <div>
+                    <label style={{ fontFamily: "'Inter', sans-serif", fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#7A6E62', display: 'block', marginBottom: '8px' }}>
+                      Email Address
+                    </label>
+                    <input type="email" required value={formData.email}
+                      onChange={(e) => setFormData((p) => ({ ...p, email: e.target.value }))}
+                      placeholder="john@example.com" style={inputStyle}
+                      onFocus={(e) => { e.target.style.borderColor = '#4A7C59'; }}
+                      onBlur={(e) => { e.target.style.borderColor = 'rgba(208, 198, 179, 0.7)'; }} />
+                  </div>
+
+                  <div>
+                    <label style={{ fontFamily: "'Inter', sans-serif", fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#7A6E62', display: 'block', marginBottom: '8px' }}>
+                      Message
+                    </label>
+                    <textarea required rows="5" value={formData.message}
+                      onChange={(e) => setFormData((p) => ({ ...p, message: e.target.value }))}
+                      placeholder="How can we assist you?"
+                      style={{ ...inputStyle, resize: 'none' }}
+                      onFocus={(e) => { e.target.style.borderColor = '#4A7C59'; }}
+                      onBlur={(e) => { e.target.style.borderColor = 'rgba(208, 198, 179, 0.7)'; }} />
+                  </div>
+
+                  <button type="submit" className="btn-earth" style={{ justifyContent: 'center', width: '100%' }}>
+                    Send Message <Send size={14} />
+                  </button>
+                </motion.form>
+              ) : (
+                <motion.div
+                  key="success"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', gap: '20px', padding: '40px 0' }}
+                >
+                  <div style={{
+                    width: '64px', height: '64px', borderRadius: '50%',
+                    background: 'rgba(45,90,61,0.1)',
+                    border: '1px solid rgba(45,90,61,0.2)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  }}>
+                    <CheckCircle2 size={30} color="#2D5A3D" />
+                  </div>
+                  <div>
+                    <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.6rem', fontWeight: 700, color: '#1B3A2D', margin: '0 0 8px' }}>
+                      Message Sent!
+                    </h3>
+                    <p style={{ fontFamily: "'Inter', sans-serif", fontSize: '0.85rem', color: '#7A6E62', lineHeight: 1.65, margin: 0, maxWidth: '300px' }}>
+                      Thank you, <strong style={{ color: '#1B3A2D' }}>{formData.name}</strong>. We'll respond to <strong style={{ color: '#1B3A2D' }}>{formData.email}</strong> shortly.
+                    </p>
+                  </div>
+                  <button
+                    onClick={handleReset}
+                    style={{
+                      padding: '10px 24px',
+                      borderRadius: '9999px',
+                      fontFamily: "'Inter', sans-serif",
+                      fontSize: '0.72rem',
+                      fontWeight: 600,
+                      color: '#2D5A3D',
+                      background: 'rgba(45,90,61,0.08)',
+                      border: '1px solid rgba(45,90,61,0.2)',
+                      cursor: 'pointer',
+                    }}
                   >
-                    <div className="space-y-2">
-                      <label className="text-xs font-bold text-brand-text-secondary uppercase tracking-wider">Your Name</label>
-                      <input
-                        type="text"
-                        required
-                        value={formData.name}
-                        onChange={(e) => setFormData((prev) => ({ ...prev, name: e.target.value }))}
-                        placeholder="John Doe"
-                        className="w-full px-4 py-3 rounded-2xl bg-brand-bg-primary border border-brand-border text-brand-dark-brown placeholder-brand-text-secondary/60 text-sm focus:outline-none focus:border-brand-gold/50 focus:ring-1 focus:ring-brand-gold/30 transition-all font-sans"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <label className="text-xs font-bold text-brand-text-secondary uppercase tracking-wider">Email Address</label>
-                      <input
-                        type="email"
-                        required
-                        value={formData.email}
-                        onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
-                        placeholder="john@example.com"
-                        className="w-full px-4 py-3 rounded-2xl bg-brand-bg-primary border border-brand-border text-brand-dark-brown placeholder-brand-text-secondary/60 text-sm focus:outline-none focus:border-brand-gold/50 focus:ring-1 focus:ring-brand-gold/30 transition-all font-sans"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <label className="text-xs font-bold text-brand-text-secondary uppercase tracking-wider">Message</label>
-                      <textarea
-                        required
-                        rows="4"
-                        value={formData.message}
-                        onChange={(e) => setFormData((prev) => ({ ...prev, message: e.target.value }))}
-                        placeholder="How can we assist you?"
-                        className="w-full px-4 py-3 rounded-2xl bg-brand-bg-primary border border-brand-border text-brand-dark-brown placeholder-brand-text-secondary/60 text-sm focus:outline-none focus:border-brand-gold/50 focus:ring-1 focus:ring-brand-gold/30 transition-all resize-none font-sans"
-                      />
-                    </div>
-
-                    <button
-                      type="submit"
-                      className="w-full py-4 rounded-full text-xs font-semibold text-brand-bg-secondary bg-brand-gold hover:bg-[#C89463] hover:shadow-lg hover:shadow-brand-gold/20 transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer font-sans"
-                    >
-                      <span>Send Message</span>
-                      <Send className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                    </button>
-                  </motion.form>
-                ) : (
-                  <motion.div
-                    key="success-form"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="text-center py-12 space-y-6"
-                  >
-                    <div className="w-16 h-16 rounded-full bg-brand-gold/15 border border-brand-gold/20 flex items-center justify-center text-brand-gold mx-auto">
-                      <CheckCircle2 className="w-8 h-8" />
-                    </div>
-                    <div className="space-y-2">
-                      <h3 className="font-display font-bold text-2xl text-brand-dark-brown">Message Transmitted</h3>
-                      <p className="text-brand-text-secondary text-sm max-w-sm mx-auto font-sans">
-                        Thank you, <span className="text-brand-dark-brown font-semibold">{formData.name}</span>. Our support desk has received your inquiry and will respond to <span className="text-brand-dark-brown font-semibold">{formData.email}</span> shortly.
-                      </p>
-                    </div>
-                    <button
-                      onClick={handleReset}
-                      className="px-6 py-2.5 rounded-full text-xs font-semibold text-brand-brown hover:text-brand-dark-brown bg-brand-gold/10 border border-brand-gold/20 transition-colors cursor-pointer font-sans"
-                    >
-                      Send Another Message
-                    </button>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+                    Send Another Message
+                  </button>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
-
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 1023px) { .contact-grid { grid-template-columns: 1fr !important; } }
+      `}</style>
     </section>
   );
 }
