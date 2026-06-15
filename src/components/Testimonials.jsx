@@ -28,19 +28,19 @@ export default function Testimonials() {
   ];
 
   return (
-    <section className="py-24 bg-brand-dark relative overflow-hidden bg-dots">
-      <div className="absolute bottom-10 left-10 w-[300px] h-[300px] bg-brand-accent/5 rounded-full blur-[100px] pointer-events-none" />
+    <section className="py-28 bg-brand-bg-primary relative overflow-hidden border-t border-brand-border bg-dots">
+      <div className="absolute bottom-10 left-10 w-[300px] h-[300px] bg-brand-gold/5 rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative">
+      <div className="max-w-7xl mx-auto px-8 relative">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-20 space-y-4">
-          <span className="text-xs font-semibold uppercase tracking-widest text-brand-accent">
+        <div className="text-center max-w-2xl mx-auto mb-20 space-y-4 font-sans">
+          <span className="text-xs font-semibold uppercase tracking-widest text-brand-gold font-sans">
             REVIEWS
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white font-display">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-brand-dark-brown font-display leading-tight">
             Trusted By Thousands
           </h2>
-          <p className="text-slate-400 text-sm">
+          <p className="text-brand-text-secondary text-sm font-sans">
             Hear from our corporate logistic clients and vacation travelers who experience the premium MARJ standard every day.
           </p>
         </div>
@@ -57,7 +57,7 @@ export default function Testimonials() {
               className="glass-panel glass-panel-hover p-8 rounded-3xl flex flex-col justify-between relative"
             >
               {/* Quote Icon Background */}
-              <Quote className="absolute right-8 top-8 w-10 h-10 text-slate-800 opacity-20 pointer-events-none" />
+              <Quote className="absolute right-8 top-8 w-10 h-10 text-brand-gold/15 pointer-events-none" />
 
               <div className="space-y-6">
                 {/* Stars */}
@@ -68,23 +68,23 @@ export default function Testimonials() {
                 </div>
 
                 {/* Review Text */}
-                <p className="text-slate-300 text-sm leading-relaxed italic font-sans">
+                <p className="text-brand-text-secondary text-sm leading-relaxed italic font-sans">
                   "{rev.review}"
                 </p>
               </div>
 
               {/* Profile info */}
-              <div className="flex items-center gap-4 mt-8 pt-6 border-t border-white/5">
+              <div className="flex items-center gap-4 mt-8 pt-6 border-t border-brand-border">
                 <img
                   src={rev.image}
                   alt={rev.name}
-                  className="w-11 h-11 rounded-full object-cover border border-white/10"
+                  className="w-11 h-11 rounded-full object-cover border border-brand-border"
                 />
                 <div>
-                  <h4 className="font-display font-semibold text-sm text-white">
+                  <h4 className="font-display font-semibold text-sm text-brand-dark-brown">
                     {rev.name}
                   </h4>
-                  <p className="text-[11px] text-slate-500 font-medium">
+                  <p className="text-[11px] text-brand-text-secondary font-medium font-sans">
                     {rev.role}
                   </p>
                 </div>

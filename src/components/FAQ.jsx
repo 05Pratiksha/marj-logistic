@@ -33,44 +33,44 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="py-24 bg-brand-dark relative overflow-hidden bg-dots">
-      <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-brand-violet/5 rounded-full blur-[120px] pointer-events-none" />
+    <section id="faq" className="py-28 bg-brand-bg-secondary relative overflow-hidden border-t border-brand-border bg-dots">
+      <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-brand-gold/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="max-w-4xl mx-auto px-6 relative">
+      <div className="max-w-4xl mx-auto px-8 relative">
         {/* Header */}
-        <div className="text-center max-w-xl mx-auto mb-20 space-y-4">
-          <span className="text-xs font-semibold uppercase tracking-widest text-brand-accent">
+        <div className="text-center max-w-xl mx-auto mb-20 space-y-4 font-sans">
+          <span className="text-xs font-semibold uppercase tracking-widest text-brand-gold font-sans">
             FAQ
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white font-display">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-brand-dark-brown font-display leading-tight">
             Frequently Asked Questions
           </h2>
-          <p className="text-slate-400 text-sm">
+          <p className="text-brand-text-secondary text-sm font-sans">
             Quick answers regarding shipping durations, travel package customizations, ticket refund terms, and business support.
           </p>
         </div>
 
         {/* FAQ List */}
-        <div className="space-y-4">
+        <div className="space-y-4 font-sans">
           {faqs.map((faq, index) => {
             const isOpen = activeIndex === index;
             return (
               <div
                 key={index}
-                className="glass-panel rounded-2xl overflow-hidden border border-white/5 bg-brand-card/25 transition-all duration-300"
+                className="bg-brand-card rounded-2xl overflow-hidden border border-brand-border shadow-sm hover:border-brand-gold/30 transition-all duration-300"
               >
                 <button
                   type="button"
                   onClick={() => handleToggle(index)}
-                  className="w-full px-6 py-5 flex justify-between items-center text-left hover:bg-white/5 transition-colors gap-4"
+                  className="w-full px-6 py-5 flex justify-between items-center text-left hover:bg-brand-bg-primary/30 transition-colors gap-4 cursor-pointer"
                 >
                   <div className="flex items-center gap-3.5">
-                    <HelpCircle className={`w-4 h-4 shrink-0 transition-colors ${isOpen ? 'text-brand-accent' : 'text-slate-500'}`} />
-                    <span className="text-sm font-semibold text-white tracking-wide font-display">
+                    <HelpCircle className={`w-4 h-4 shrink-0 transition-colors ${isOpen ? 'text-brand-gold' : 'text-brand-text-secondary/70'}`} />
+                    <span className="text-sm font-semibold text-brand-dark-brown tracking-wide font-display">
                       {faq.question}
                     </span>
                   </div>
-                  <div className={`p-1.5 rounded-lg border transition-colors ${isOpen ? 'border-brand-accent text-brand-accent bg-brand-accent/5' : 'border-white/10 text-slate-400'}`}>
+                  <div className={`p-1.5 rounded-lg border transition-colors ${isOpen ? 'border-brand-gold text-brand-gold bg-brand-gold/5' : 'border-brand-border text-brand-text-secondary'}`}>
                     {isOpen ? <Minus className="w-3.5 h-3.5" /> : <Plus className="w-3.5 h-3.5" />}
                   </div>
                 </button>
@@ -84,7 +84,7 @@ export default function FAQ() {
                       transition={{ duration: 0.3, ease: 'easeInOut' }}
                       className="overflow-hidden"
                     >
-                      <div className="px-6 pb-6 pt-2 text-xs md:text-sm text-slate-400 leading-relaxed font-sans border-t border-white/5">
+                      <div className="px-6 pb-6 pt-2 text-xs md:text-sm text-brand-text-secondary leading-relaxed font-sans border-t border-brand-border">
                         {faq.answer}
                       </div>
                     </motion.div>

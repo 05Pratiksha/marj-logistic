@@ -57,27 +57,27 @@ export default function TravelPackages() {
   ];
 
   return (
-    <section id="tours" className="py-24 bg-brand-dark relative overflow-hidden bg-dots">
+    <section id="tours" className="py-28 bg-brand-bg-primary relative overflow-hidden border-t border-brand-border bg-dots">
       <div className="absolute top-1/3 right-0 w-[400px] h-[400px] bg-brand-gold/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative">
+      <div className="max-w-7xl mx-auto px-8 relative">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div className="space-y-4 max-w-xl">
-            <span className="text-xs font-semibold uppercase tracking-widest text-brand-gold">
+            <span className="text-xs font-semibold uppercase tracking-widest text-brand-gold font-sans">
               Curated Expeditions
             </span>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white font-display">
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-brand-dark-brown font-display leading-tight">
               Featured Travel Packages
             </h2>
-            <p className="text-slate-400 text-sm md:text-base">
+            <p className="text-brand-text-secondary text-sm md:text-base leading-relaxed font-sans">
               Handpicked itineraries curated by local guides. Complete packages covering airport transport, luxury resorts, and custom activities.
             </p>
           </div>
           <div className="shrink-0">
             <a
               href="#booking"
-              className="text-sm font-semibold text-brand-gold hover:text-white transition-colors flex items-center gap-2"
+              className="text-xs font-semibold tracking-wider uppercase text-brand-gold hover:text-brand-brown transition-colors flex items-center gap-2 font-sans"
             >
               Request Custom Itinerary
               <ArrowRight className="w-4 h-4" />
@@ -94,7 +94,7 @@ export default function TravelPackages() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: pkg.id * 0.1 }}
-              className="glass-panel rounded-3xl overflow-hidden flex flex-col justify-between group border border-white/5 bg-brand-card/30 hover:border-brand-gold/30 hover:shadow-2xl hover:shadow-brand-gold/5 transition-all duration-500"
+              className="bg-brand-card rounded-3xl overflow-hidden flex flex-col justify-between group border border-brand-border hover:border-brand-gold/30 hover:shadow-2xl hover:shadow-brand-dark-brown/5 transition-all duration-500"
             >
               {/* Image Container with Zoom */}
               <div className="relative aspect-[4/3] w-full overflow-hidden">
@@ -103,7 +103,7 @@ export default function TravelPackages() {
                   alt={pkg.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                 />
-                <div className="absolute top-4 left-4 bg-brand-dark/60 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-semibold text-white tracking-wide flex items-center gap-1.5">
+                <div className="absolute top-4 left-4 bg-brand-dark-brown/85 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-semibold text-brand-bg-secondary tracking-wide flex items-center gap-1.5 font-sans">
                   <Calendar className="w-3 h-3 text-brand-gold" />
                   {pkg.duration}
                 </div>
@@ -112,31 +112,31 @@ export default function TravelPackages() {
               {/* Card Body */}
               <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                 <div className="space-y-2">
-                  <div className="flex items-center gap-1 text-[11px] font-semibold text-slate-400">
+                  <div className="flex items-center gap-1 text-[11px] font-semibold text-brand-text-secondary font-sans">
                     <Star className="w-3.5 h-3.5 fill-brand-gold text-brand-gold" />
-                    <span className="text-white">{pkg.rating}</span>
+                    <span className="text-brand-dark-brown">{pkg.rating}</span>
                     <span>({pkg.reviews} reviews)</span>
                   </div>
-                  <h3 className="font-display font-bold text-lg text-white group-hover:text-brand-gold transition-colors duration-300">
+                  <h3 className="font-display font-bold text-lg text-brand-dark-brown group-hover:text-brand-gold transition-colors duration-300">
                     {pkg.title}
                   </h3>
                 </div>
 
-                <div className="flex items-end justify-between pt-4 border-t border-white/5">
+                <div className="flex items-end justify-between pt-4 border-t border-brand-border">
                   <div>
-                    <span className="text-[10px] text-slate-500 line-through block font-medium">
+                    <span className="text-[10px] text-brand-text-secondary/70 line-through block font-medium font-sans">
                       {pkg.originalPrice}
                     </span>
-                    <span className="text-lg font-bold text-white tracking-tight">
+                    <span className="text-lg font-bold text-brand-dark-brown tracking-tight font-sans">
                       {pkg.price}
                     </span>
-                    <span className="text-[10px] text-slate-400 block -mt-1 font-medium">
+                    <span className="text-[10px] text-brand-text-secondary block -mt-1 font-medium font-sans">
                       per person
                     </span>
                   </div>
                   <button
                     onClick={() => setActivePackage(pkg)}
-                    className="px-4 py-2 rounded-xl text-xs font-semibold text-white bg-white/5 border border-white/10 hover:bg-white/10 group-hover:bg-brand-gold group-hover:text-brand-dark group-hover:border-transparent transition-all duration-300"
+                    className="px-4 py-2 rounded-full text-xs font-semibold text-brand-brown bg-brand-gold/10 border border-brand-gold/20 hover:bg-brand-gold hover:text-brand-bg-secondary hover:border-transparent transition-all duration-300 cursor-pointer font-sans"
                   >
                     Explore
                   </button>
@@ -157,7 +157,7 @@ export default function TravelPackages() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setActivePackage(null)}
-              className="absolute inset-0 bg-brand-dark/90 backdrop-blur-md"
+              className="absolute inset-0 bg-brand-dark-brown/70 backdrop-blur-md"
             />
 
             {/* Modal Box */}
@@ -165,7 +165,7 @@ export default function TravelPackages() {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-2xl glass-panel rounded-3xl overflow-hidden border border-white/10 shadow-2xl z-10"
+              className="relative w-full max-w-2xl bg-brand-bg-secondary rounded-3xl overflow-hidden border border-brand-border shadow-2xl z-10"
             >
               {/* Image header */}
               <div className="relative h-64 w-full">
@@ -174,18 +174,18 @@ export default function TravelPackages() {
                   alt={activePackage.title}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-bg-secondary via-brand-bg-secondary/30 to-transparent" />
                 <button
                   onClick={() => setActivePackage(null)}
-                  className="absolute top-6 right-6 p-2 rounded-full bg-brand-dark/80 border border-white/10 text-slate-400 hover:text-white transition-colors"
+                  className="absolute top-6 right-6 p-2 rounded-full bg-brand-bg-primary/80 border border-brand-border text-brand-text-secondary hover:text-brand-dark-brown transition-colors cursor-pointer"
                 >
                   <X className="w-4 h-4" />
                 </button>
                 <div className="absolute bottom-6 left-6 right-6">
-                  <span className="text-xs font-bold text-brand-gold uppercase tracking-wider">
+                  <span className="text-xs font-bold text-brand-gold uppercase tracking-wider font-sans">
                     Featured Tour package
                   </span>
-                  <h3 className="font-display font-bold text-3xl text-white mt-1">
+                  <h3 className="font-display font-bold text-3xl text-brand-dark-brown mt-1">
                     {activePackage.title}
                   </h3>
                 </div>
@@ -193,7 +193,7 @@ export default function TravelPackages() {
 
               {/* Content */}
               <div className="p-8 space-y-6">
-                <div className="flex flex-wrap items-center gap-6 text-sm text-slate-300">
+                <div className="flex flex-wrap items-center gap-6 text-sm text-brand-text-primary font-sans">
                   <div className="flex items-center gap-2">
                     <Calendar className="w-4 h-4 text-brand-gold" />
                     <span>{activePackage.duration}</span>
@@ -205,22 +205,22 @@ export default function TravelPackages() {
                 </div>
 
                 <div className="space-y-2">
-                  <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-400">
+                  <h4 className="text-xs font-semibold uppercase tracking-wider text-brand-brown font-sans">
                     Package Description
                   </h4>
-                  <p className="text-sm text-slate-300 leading-relaxed font-sans">
+                  <p className="text-sm text-brand-text-secondary leading-relaxed font-sans">
                     {activePackage.description}
                   </p>
                 </div>
 
                 <div className="space-y-3">
-                  <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-400">
+                  <h4 className="text-xs font-semibold uppercase tracking-wider text-brand-brown font-sans">
                     What's Included
                   </h4>
                   <div className="grid grid-cols-2 gap-3">
                     {activePackage.highlights.map((item, i) => (
-                      <div key={i} className="flex items-center gap-2 text-xs text-slate-300">
-                        <div className="w-4 h-4 rounded-full bg-brand-gold/15 flex items-center justify-center text-brand-gold shrink-0">
+                      <div key={i} className="flex items-center gap-2 text-xs text-brand-text-secondary font-sans">
+                        <div className="w-4 h-4 rounded-full bg-brand-gold/10 flex items-center justify-center text-brand-gold shrink-0">
                           <Check className="w-2.5 h-2.5" />
                         </div>
                         <span>{item}</span>
@@ -229,14 +229,14 @@ export default function TravelPackages() {
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between pt-6 border-t border-white/10">
+                <div className="flex items-center justify-between pt-6 border-t border-brand-border">
                   <div>
-                    <span className="text-xs text-slate-400">Price details</span>
+                    <span className="text-[10px] text-brand-text-secondary/70 uppercase tracking-wider block font-sans">Price details</span>
                     <div className="flex items-center gap-2">
-                      <span className="text-2xl font-bold text-white font-display">
+                      <span className="text-2xl font-bold text-brand-dark-brown font-sans">
                         {activePackage.price}
                       </span>
-                      <span className="text-xs text-slate-500 line-through">
+                      <span className="text-xs text-brand-text-secondary/70 line-through font-sans">
                         {activePackage.originalPrice}
                       </span>
                     </div>
@@ -244,7 +244,7 @@ export default function TravelPackages() {
                   <a
                     href="#booking"
                     onClick={() => setActivePackage(null)}
-                    className="px-6 py-3 rounded-full text-xs font-semibold text-brand-dark bg-brand-gold hover:shadow-lg hover:shadow-brand-gold/20 transition-all duration-300"
+                    className="btn-primary"
                   >
                     Book Journey Now
                   </a>

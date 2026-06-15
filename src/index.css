@@ -1,52 +1,45 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap');
 
 @import "tailwindcss";
 
 @theme {
-  --color-brand-dark: #030712;
-  --color-brand-card: #0B0F19;
-  --color-brand-accent: #6366F1;
-  --color-brand-violet: #8B5CF6;
-  --color-brand-emerald: #10B981;
-  --color-brand-gold: #D97706;
+  --color-brand-bg-primary: #FAF7F2;
+  --color-brand-bg-secondary: #FFFDF8;
+  --color-brand-text-primary: #1F2937;
+  --color-brand-text-secondary: #6B7280;
+  --color-brand-gold: #D4A574;
+  --color-brand-brown: #8B5E3C;
+  --color-brand-dark-brown: #3E2723;
+  --color-brand-border: #E8E1D8;
+  --color-brand-card: #FFFFFF;
+  --color-brand-footer: #2B1D16;
+  --color-brand-footer-text: #F5F5F5;
 
   --font-sans: 'Inter', sans-serif;
-  --font-display: 'Outfit', sans-serif;
+  --font-display: 'Playfair Display', serif;
 }
 
 @utility glass-panel {
-  background: rgba(11, 15, 25, 0.55);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  border: 1px solid var(--color-brand-border);
 }
 
 @utility glass-panel-hover {
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   &:hover {
-    background: rgba(11, 15, 25, 0.75);
-    border-color: rgba(99, 102, 241, 0.25);
+    background: rgba(255, 255, 255, 0.9);
+    border-color: var(--color-brand-gold);
     box-shadow: 
-      0 30px 60px -15px rgba(0, 0, 0, 0.8),
-      0 0 50px -10px rgba(99, 102, 241, 0.12);
+      0 30px 60px -15px rgba(62, 39, 35, 0.08),
+      0 0 50px -10px rgba(212, 165, 116, 0.15);
     transform: translateY(-4px);
   }
 }
 
-@utility text-gradient-purple {
-  background: linear-gradient(135deg, #FFFFFF 0%, #C7D2FE 50%, #8B5CF6 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-@utility text-gradient-emerald {
-  background: linear-gradient(135deg, #FFFFFF 0%, #A7F3D0 50%, #10B981 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 @utility text-gradient-gold {
-  background: linear-gradient(135deg, #FFFFFF 0%, #FDE68A 50%, #D97706 100%);
+  background: linear-gradient(135deg, var(--color-brand-dark-brown) 0%, var(--color-brand-brown) 50%, var(--color-brand-gold) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -60,22 +53,91 @@
 }
 
 @utility bg-dots {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  background-size: 24px 24px;
+  background-image: radial-gradient(rgba(212, 165, 116, 0.12) 1.5px, transparent 1.5px);
+  background-size: 32px 32px;
 }
 
-@utility animate-gradient-x {
-  background-size: 200% 200%;
-  animation: gradient-x 10s ease infinite;
+@utility btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 34px;
+  background-color: var(--color-brand-gold);
+  color: var(--color-brand-bg-secondary);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  border: 1px solid var(--color-brand-gold);
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  &:hover {
+    background-color: #C89463;
+    border-color: #C89463;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(212, 165, 116, 0.2);
+  }
+}
+
+@utility btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 34px;
+  background: transparent;
+  color: var(--color-brand-dark-brown);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  border: 1px solid var(--color-brand-border);
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  &:hover {
+    background: var(--color-brand-bg-secondary);
+    color: var(--color-brand-gold);
+    border-color: var(--color-brand-gold);
+    transform: translateY(-2px);
+  }
+}
+
+@utility btn-outline-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 34px;
+  background: transparent;
+  color: var(--color-brand-footer-text);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  border: 1px solid rgba(245, 245, 245, 0.4);
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  &:hover {
+    background: var(--color-brand-footer-text);
+    color: var(--color-brand-dark-brown);
+    transform: translateY(-2px);
+  }
 }
 
 @layer base {
   body {
-    @apply bg-brand-dark text-slate-100 font-sans antialiased overflow-x-hidden;
+    @apply bg-brand-bg-primary text-brand-text-primary font-sans antialiased overflow-x-hidden;
     background-image: 
-      radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.06) 0px, transparent 50%),
-      radial-gradient(at 50% 0%, rgba(139, 92, 246, 0.06) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, rgba(16, 185, 129, 0.06) 0px, transparent 50%);
+      radial-gradient(at 0% 0%, rgba(214, 129, 56, 0.03) 0px, transparent 50%),
+      radial-gradient(at 50% 0%, rgba(139, 94, 60, 0.03) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(62, 39, 35, 0.03) 0px, transparent 50%);
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -90,24 +152,15 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #030712;
+  background: var(--color-brand-bg-primary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1F2937;
+  background: var(--color-brand-border);
   border-radius: 9999px;
-  border: 2px solid #030712;
+  border: 2px solid var(--color-brand-bg-primary);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #374151;
-}
-
-@keyframes gradient-x {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
+  background: var(--color-brand-gold);
 }
