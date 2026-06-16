@@ -106,21 +106,8 @@ export default function Footer() {
           className="footer-top">
           {/* Brand */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '12px', textDecoration: 'none' }}>
-              <div style={{
-                width: '44px', height: '44px', borderRadius: '50%',
-                background: 'linear-gradient(135deg, #2D5A3D 0%, #4A7C59 100%)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                boxShadow: '0 4px 20px rgba(27,58,45,0.4)',
-              }}>
-                <Leaf size={20} color="#A8D5B5" />
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.4rem', fontWeight: 700, color: '#F4EFE6', lineHeight: 1 }}>MARJ</span>
-                <span style={{ fontFamily: "'Inter', sans-serif", fontSize: '0.55rem', fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#7FAF8A', marginTop: '3px' }}>
-                  Logistics & Travel
-                </span>
-              </div>
+            <a href="#" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+              <img src="/logo.jpg" alt="MARJ Logistics Tour and Travel Logo" style={{ height: '52px', width: 'auto', objectFit: 'contain', borderRadius: '8px', padding: '2px', background: '#FFFFFF' }} />
             </a>
             <p style={{
               fontFamily: "'Inter', sans-serif",

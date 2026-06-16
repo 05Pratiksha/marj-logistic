@@ -3,9 +3,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Phone, Mail, MapPin, Send, CheckCircle2 } from 'lucide-react';
 
 const contactItems = [
-  { icon: Phone, label: 'Toll-Free Helpline', value: '1800-210-9000' },
-  { icon: Mail, label: 'Corporate Support', value: 'support@marjlogistics.com' },
-  { icon: MapPin, label: 'Mumbai Headquarters', value: 'Level 8, Maker Maxity, BKC, Mumbai - 400051' },
+  { icon: Phone, label: 'Helpline', value: '+91 7889306316, 7006502524' },
+  { icon: Mail, label: 'Corporate Support', value: 'marjlogistics007@gmail.com' },
+  { icon: MapPin, label: 'Registered Office', value: 'KREERI BARAMULLA Jammu and Kashmir - 193108' },
 ];
 
 const inputStyle = {

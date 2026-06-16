@@ -45,34 +45,8 @@ export default function Navbar() {
     >
       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         {/* Logo */}
-        <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '12px', textDecoration: 'none' }}>
-          <div style={{
-            width: '42px', height: '42px', borderRadius: '50%',
-            background: 'linear-gradient(135deg, #1B3A2D 0%, #2D5A3D 100%)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            boxShadow: '0 4px 16px rgba(27, 58, 45, 0.25)',
-          }}>
-            <Leaf size={18} color="#A8D5B5" />
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <span style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontSize: '1.3rem',
-              fontWeight: 700,
-              letterSpacing: '-0.01em',
-              color: '#1B3A2D',
-              lineHeight: 1,
-            }}>MARJ</span>
-            <span style={{
-              fontFamily: "'Inter', sans-serif",
-              fontSize: '0.55rem',
-              fontWeight: 600,
-              letterSpacing: '0.22em',
-              color: '#7A6E62',
-              textTransform: 'uppercase',
-              marginTop: '2px',
-            }}>Logistics & Travel</span>
-          </div>
+        <a href="#" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+          <img src="/logo.jpg" alt="MARJ Logistics Tour and Travel Logo" style={{ height: '52px', width: 'auto', objectFit: 'contain' }} />
         </a>
 
         {/* Desktop Nav */}

@@ -49,7 +49,29 @@ export default function BookingForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.phone || !formData.origin || !formData.destination || !formData.date) return;
+    const isTour = serviceType === 'tour';
+    if (!formData.name || !formData.phone || !formData.date || (!isTour && (!formData.origin || !formData.destination))) return;
+    
+    // Construct message to send via WhatsApp
+    const serviceName = servicesList.find(s => s.id === serviceType)?.name || serviceType;
+    let message = `*New Booking Enquiry - Marj Logistics & Travel*\n\n`;
+    message += `*Service:* ${serviceName}\n`;
+    message += `*Name:* ${formData.name}\n`;
+    message += `*Phone:* ${formData.phone}\n`;
+    if (!isTour) {
+      message += `*Departure/Origin:* ${formData.origin}\n`;
+      message += `*Destination:* ${formData.destination}\n`;
+    }
+    message += `*Date:* ${formData.date}\n`;
+    if (serviceType === 'courier') {
+      message += `*Weight:* ${formData.weight} kg\n`;
+    } else {
+      message += `*Travelers:* ${formData.travelers}\n`;
+    }
+
+    const whatsappUrl = `https://wa.me/917889306316?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+
     setShowSuccess(true);
   };
 
@@ -162,27 +184,31 @@ export default function BookingForm() {
                   onBlur={(e) => { e.target.style.borderColor = 'rgba(208, 198, 179, 0.7)'; }} />
               </div>
               {/* Origin */}
-              <div>
-                <label style={labelStyle}><MapPin size={12} color="#4A7C59" />
-                  {serviceType === 'courier' ? 'Pickup Pincode' : 'Departure City'}
-                </label>
-                <input type="text" name="origin" required value={formData.origin} onChange={handleInputChange}
-                  placeholder={serviceType === 'courier' ? 'e.g. 110001 (Delhi)' : 'e.g. Mumbai'}
-                  style={inputStyle}
-                  onFocus={(e) => { e.target.style.borderColor = '#4A7C59'; }}
-                  onBlur={(e) => { e.target.style.borderColor = 'rgba(208, 198, 179, 0.7)'; }} />
-              </div>
+              {serviceType !== 'tour' && (
+                <div>
+                  <label style={labelStyle}><MapPin size={12} color="#4A7C59" />
+                    {serviceType === 'courier' ? 'Pickup Pincode' : 'Departure City'}
+                  </label>
+                  <input type="text" name="origin" required value={formData.origin} onChange={handleInputChange}
+                    placeholder={serviceType === 'courier' ? 'e.g. 110001 (Delhi)' : 'e.g. Mumbai'}
+                    style={inputStyle}
+                    onFocus={(e) => { e.target.style.borderColor = '#4A7C59'; }}
+                    onBlur={(e) => { e.target.style.borderColor = 'rgba(208, 198, 179, 0.7)'; }} />
+                </div>
+              )}
               {/* Destination */}
-              <div>
-                <label style={labelStyle}><MapPin size={12} color="#B56B3F" />
-                  {serviceType === 'courier' ? 'Delivery Pincode' : 'Destination City'}
-                </label>
-                <input type="text" name="destination" required value={formData.destination} onChange={handleInputChange}
-                  placeholder={serviceType === 'courier' ? 'e.g. 560001 (Bangalore)' : 'e.g. Goa'}
-                  style={inputStyle}
-                  onFocus={(e) => { e.target.style.borderColor = '#4A7C59'; }}
-                  onBlur={(e) => { e.target.style.borderColor = 'rgba(208, 198, 179, 0.7)'; }} />
-              </div>
+              {serviceType !== 'tour' && (
+                <div>
+                  <label style={labelStyle}><MapPin size={12} color="#B56B3F" />
+                    {serviceType === 'courier' ? 'Delivery Pincode' : 'Destination City'}
+                  </label>
+                  <input type="text" name="destination" required value={formData.destination} onChange={handleInputChange}
+                    placeholder={serviceType === 'courier' ? 'e.g. 560001 (Bangalore)' : 'e.g. Goa'}
+                    style={inputStyle}
+                    onFocus={(e) => { e.target.style.borderColor = '#4A7C59'; }}
+                    onBlur={(e) => { e.target.style.borderColor = 'rgba(208, 198, 179, 0.7)'; }} />
+                </div>
+              )}
               {/* Date */}
               <div>
                 <label style={labelStyle}><Calendar size={12} color="#4A7C59" />
@@ -283,9 +309,9 @@ export default function BookingForm() {
               }}>
                 {[
                   ['Service', serviceType.charAt(0).toUpperCase() + serviceType.slice(1)],
-                  ['Destination', formData.destination],
+                  serviceType !== 'tour' ? ['Destination', formData.destination] : null,
                   ['Date', formData.date],
-                ].map(([k, v]) => (
+                ].filter(Boolean).map(([k, v]) => (
                   <div key={k} style={{ display: 'flex', justifyContent: 'space-between', fontFamily: "'Inter', sans-serif", fontSize: '0.8rem' }}>
                     <span style={{ color: '#7A6E62' }}>{k}:</span>
                     <span style={{ color: '#1B3A2D', fontWeight: 600 }}>{v}</span>
